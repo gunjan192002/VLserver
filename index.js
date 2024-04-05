@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(cors())
 mongoose.connect("mongodb+srv://gunjan192002:gunjan1234@cluster0.1b3uuiv.mongodb.net/")
  
-app.post('/register',(req,res) => {
+app.post('/login',(req,res) => {
 
     const {email,password}=req.body;
     EmployeeModel.findOne({email:email})
@@ -16,23 +16,26 @@ app.post('/register',(req,res) => {
             if(user.password===password)
             {
                 res.json("Success")
+                console.log("1")
             }
             else{
-                res.json("Teh password is incorrect")
+                res.json("The password is incorrect")
+                console.log("2")
             }
         }
         else{
             res.json("No record existed")
+            console.log("3")
         }
     })
 })
-app.post('/login',(req,res) => {
+app.post('/register',(req,res) => {
 
     EmployeeModel.create(req.body)
     .then(employees=>res.json(employees))
     .catch(err=>console.log(err))
 })
-app.listen(3069,()=>{
+app.listen(3001,()=>{
 
     console.log("server is running on port 3001")
 
