@@ -6,9 +6,9 @@ const app=express()
 app.use(express.json())
 app.use(cors())
 mongoose.connect("mongodb+srv://gunjan192002:gunjan1234@cluster0.1b3uuiv.mongodb.net/")
- app.get("/", (req, res) => {
-  res.send({ message: "Hello world"})
-  })
+app.get('/', (req, res) => {
+    res.send('Hello from the backend!');
+  });
 app.post('/login',(req,res) => {
 
     const {email,password}=req.body;
